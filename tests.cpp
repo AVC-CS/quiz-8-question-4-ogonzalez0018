@@ -5,62 +5,47 @@
 #include "main.hpp"
 // tests for exercise 1
 
-TEST_CASE("Ex1 emailcheck() ", "[example]")
+TEST_CASE("Ex1 ", "[example]")
 {
-	int ret;
-	string email;
+	string txt1("ABCDEF,GHI,JKLMN,OP");
+	char target[MAXNUM][MAXLEN];
+	int result;
+	char delimiter = ',';
 
-	email = "ABCDEF@company.com";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  1\n");
-	REQUIRE(ret == 1);
-	cout << "--------------------------------------------------\n";
-
-	email = "ABC@company.com";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
-	cout << "--------------------------------------------------\n";
-
-	email = "johnsmith@company.io.edu";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  1\n");
-	REQUIRE(ret == 1);
+	result = splitline(txt1, delimiter, target);
+	cout << "The Split Results " << endl;
+	for (int i = 0; i < result; i++)
+		cout << target[i] << endl;
+	INFO("The result should  4\n");
+	REQUIRE(result == 4);
+	REQUIRE(strlen(target[0]) == 6);
+	REQUIRE(strlen(target[1]) == 3);
+	REQUIRE(strlen(target[2]) == 5);
+	REQUIRE(strlen(target[3]) == 2);
 	cout << "--------------------------------------------------\n";
 }
 
-TEST_CASE("Ex2 emailcheck() ", "[example]")
+TEST_CASE("Ex2 ", "[example]")
 {
-	int ret;
-	string email;
+	string txt1("Python/Programming/C++/C/Java");
+	char target[MAXNUM][MAXLEN];
+	int result;
+	char delimiter = '/';
 
-	email = "john@company.server.io";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
+	result = splitline(txt1, delimiter, target);
+	cout << "The Split Results " << endl;
+	for (int i = 0; i < result; i++)
+		cout << target[i] << endl;
+	REQUIRE(result == 5);
+	REQUIRE(strlen(target[0]) == 6);
+	REQUIRE(strlen(target[1]) == 11);
+	REQUIRE(strlen(target[2]) == 3);
+	REQUIRE(strlen(target[3]) == 1);
+	REQUIRE(strlen(target[4]) == 4);
 	cout << "--------------------------------------------------\n";
-
-	email = "john@company.server";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
-	cout << "--------------------------------------------------\n";
-
-	email = "john@company.server.";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
-
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
-	cout << "--------------------------------------------------\n";
+	REQUIRE(strcmp(target[0], "Python") == 0);
+	REQUIRE(strcmp(target[1], "Programming") == 0);
+	REQUIRE(strcmp(target[2], "C++") == 0);
+	REQUIRE(strcmp(target[3], "C") == 0);
+	REQUIRE(strcmp(target[4], "Java") == 0);
 }
