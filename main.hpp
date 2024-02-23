@@ -8,6 +8,8 @@ const int MAXLEN = 100;
 
 int splitline(string, char, char[][MAXLEN]);
 
-/*******************************
- * Code your program here
- *******************************/
+int program_main(){
+    string text = "ABCDEF,GHI,JKL,MNO";
+    char target[MAXNUM][MAXLEN];
+    
+}
