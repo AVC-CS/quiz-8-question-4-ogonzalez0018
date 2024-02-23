@@ -37,6 +37,11 @@ int splitline(string txt, char delimiter, char target[][MAXLEN]) {
         }
     }
 
-    
+    if (!word.empty()) {
+        strcpy(target[cnt], word.c_str());
+        cnt++;
+    }
+
+    return cnt;
     
 }
