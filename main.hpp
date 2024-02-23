@@ -23,5 +23,20 @@ int program_main(){
 
 }
 
+int splitline(string txt, char delimiter, char target[][MAXLEN]) {
+    int cnt = 0;
+    string word = "";
 
+    for (char c : text) {
+        if (c == delimeter) {
+            strcpy(target[cnt], word.c_str());
+            cnt++;
+            word = "";
+        } else {
+            word += c;
+        }
+    }
+
+    
+    
 }
